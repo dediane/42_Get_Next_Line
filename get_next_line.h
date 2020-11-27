@@ -10,4 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFFER_SIZE=2045 
+# include <unistd.h>
+# include <stdlib.h>
+# endif
