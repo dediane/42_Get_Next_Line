@@ -6,8 +6,11 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:50:43 by ddecourt          #+#    #+#             */
-/*   Updated: 2020/11/23 19:50:46 by ddecourt         ###   ########.fr       */
+/*   Updated: 2020/11/29 22:44:00 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+int	get_next_line(int fd, char **line)
+{
+	
+}
