@@ -6,15 +6,15 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:50:43 by ddecourt          #+#    #+#             */
-/*   Updated: 2020/12/17 15:47:25 by ddecourt         ###   ########.fr       */
+/*   Updated: 2020/12/17 19:59:14 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	getline(char **mark, char *buf, int size)
+int		getline(char **mark, char *buf, int size)
 {
-	char *tmp;
+	char	*tmp;
 
 	buf[size] = '\0';
 	if (0 != *mark)
@@ -30,10 +30,10 @@ int	getline(char **mark, char *buf, int size)
 	return (0);
 }
 
-int	check(char **mark, char **line)
+int		check(char **mark, char **line)
 {
-	char *ptr;
-	char *tmp;
+	char	*ptr;
+	char	*tmp;
 
 	if ((ptr = ft_strchr(*mark, '\n')))
 	{
@@ -51,18 +51,18 @@ int	check(char **mark, char **line)
 	}
 }
 
-int	get_next_line(int fd, char **line)
+int		get_next_line(int fd, char **line)
 {
-	int size;
-	char *mark[2048];
-	char buf[BUFFER_SIZE + 1];
+	int		size;
+	char	*mark[2048];
+	char	buf[BUFFER_SIZE + 1];
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || !line )
+	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
 	while ((size = read(fd, buf, BUFFER_SIZE)) >= 0)
 	{
 		if (getline(&mark[fd], buf, size) || size == 0)
-			break;
+			break ;
 	}
 	if (size < 0)
 		return (-1);

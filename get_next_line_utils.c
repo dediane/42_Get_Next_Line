@@ -6,13 +6,13 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:51:08 by ddecourt          #+#    #+#             */
-/*   Updated: 2020/12/17 15:38:24 by ddecourt         ###   ########.fr       */
+/*   Updated: 2020/12/17 20:01:28 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char		*ft_strchr(const char *s, int c)
 {
 	while (*s != c)
 	{
@@ -23,9 +23,9 @@ char	*ft_strchr(const char *s, int c)
 	return (char *)s;
 }
 
-int	ft_strlen(const char *str)
+int			ft_strlen(const char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -33,7 +33,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
 	int		j;
@@ -55,7 +55,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s3);
 }
 
-char	*ft_strndup(const char *s1, int n)
+char		*ft_strndup(const char *s1, int n)
 {
 	char	*s2;
 	int		i;
@@ -71,5 +71,3 @@ char	*ft_strndup(const char *s1, int n)
 	s2[i] = '\0';
 	return (s2);
 }
-
-
