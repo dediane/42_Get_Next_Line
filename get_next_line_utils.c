@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:51:08 by ddecourt          #+#    #+#             */
-/*   Updated: 2020/12/15 23:26:40 by ddecourt         ###   ########.fr       */
+/*   Updated: 2020/12/17 13:10:11 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,6 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t			i;
-	unsigned char	*p_dst;
-	unsigned char	*p_src;
-
-	if (dst || src)
-	{
-		i = 0;
-		p_dst = (unsigned char*)dst;
-		p_src = (unsigned char*)src;
-		while (i < n)
-		{
-			*(p_dst + i) = *(p_src + i);
-			i++;
-		}
-	}
-	return (dst);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
@@ -73,17 +53,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s3);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strndup(const char *s1, int n)
 {
 	char	*s2;
-	int		len;
 	int		i;
 
 	i = 0;
-	len = ft_strlen(s1);
-	if (!(s2 = malloc(sizeof(char) * (len + 1))))
+	if (!(s2 = malloc(sizeof(char) * (n + 1))))
 		return (NULL);
-	while (s1[i])
+	while (s1[i] && i < n)
 	{
 		s2[i] = s1[i];
 		i++;
@@ -91,3 +69,5 @@ char	*ft_strdup(const char *s1)
 	s2[i] = '\0';
 	return (s2);
 }
+
+
