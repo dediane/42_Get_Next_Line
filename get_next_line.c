@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:50:43 by ddecourt          #+#    #+#             */
-/*   Updated: 2020/12/17 13:04:02 by ddecourt         ###   ########.fr       */
+/*   Updated: 2020/12/17 15:47:25 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	getline(char **mark, char *buf, int size)
 	if (0 != *mark)
 	{
 		tmp = ft_strjoin(*mark, buf);
-		free(*store)
+		free(*mark);
 	}
 	else
-		tmp = ft_strndup(buf, read_size);
+		tmp = ft_strndup(buf, size);
 	*mark = tmp;
 	if (ft_strchr(*mark, '\n'))
 		return (1);
@@ -32,12 +32,12 @@ int	getline(char **mark, char *buf, int size)
 
 int	check(char **mark, char **line)
 {
-	char *ptr
-	char *tmp
+	char *ptr;
+	char *tmp;
 
 	if ((ptr = ft_strchr(*mark, '\n')))
 	{
-		*line = ft_strndup(*store, ptr - *store);
+		*line = ft_strndup(*mark, ptr - *mark);
 		tmp = ft_strndup(ptr + 1, ft_strlen(ptr + 1));
 		free(*mark);
 		*mark = tmp;
@@ -45,8 +45,8 @@ int	check(char **mark, char **line)
 	}
 	else
 	{
-		*line = *store;
-		*store = 0;
+		*line = *mark;
+		*mark = 0;
 		return (0);
 	}
 }
@@ -54,13 +54,17 @@ int	check(char **mark, char **line)
 int	get_next_line(int fd, char **line)
 {
 	int size;
+	char *mark[2048];
 	char buf[BUFFER_SIZE + 1];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || !line )
-		return (NULL);
-	while (size = read(fd, , BUFFER_SIZE) >= 0)
+		return (-1);
+	while ((size = read(fd, buf, BUFFER_SIZE)) >= 0)
 	{
 		if (getline(&mark[fd], buf, size) || size == 0)
 			break;
 	}
+	if (size < 0)
+		return (-1);
+	return (check(&mark[fd], line));
 }

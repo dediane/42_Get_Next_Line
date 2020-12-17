@@ -6,9 +6,11 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:51:08 by ddecourt          #+#    #+#             */
-/*   Updated: 2020/12/17 13:10:11 by ddecourt         ###   ########.fr       */
+/*   Updated: 2020/12/17 15:38:24 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 char	*ft_strchr(const char *s, int c)
 {
