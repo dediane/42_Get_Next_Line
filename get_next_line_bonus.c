@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 19:50:43 by ddecourt          #+#    #+#             */
-/*   Updated: 2020/12/31 02:14:11 by ddecourt         ###   ########.fr       */
+/*   Created: 2020/12/31 01:24:32 by ddecourt          #+#    #+#             */
+/*   Updated: 2020/12/31 02:17:12 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-static int	getline(char **tmp_buffer, char *buf, int size)
+static	int	getline(char **tmp_buffer, char *buf, int size)
 {
 	char	*tmp;
 
@@ -30,7 +30,7 @@ static int	getline(char **tmp_buffer, char *buf, int size)
 	return (0);
 }
 
-static int	check(char **tmp_buffer, char **line)
+static	int	check(char **tmp_buffer, char **line)
 {
 	char	*ptr;
 	char	*tmp;
@@ -57,7 +57,7 @@ int			get_next_line(int fd, char **line)
 	static char	*tmp_buffer[2048];
 	char		*buf;
 
-	if (fd < 0 || fd > 2048 || BUFFER_SIZE <= 0 || line == NULL)
+	if (fd < 0 || fd >= 2048 || BUFFER_SIZE <= 0 || line == NULL)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
