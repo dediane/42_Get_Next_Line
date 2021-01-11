@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:50:43 by ddecourt          #+#    #+#             */
-/*   Updated: 2020/12/31 02:14:11 by ddecourt         ###   ########.fr       */
+/*   Updated: 2021/01/11 11:13:17 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ static int	check(char **tmp_buffer, char **line)
 
 int			get_next_line(int fd, char **line)
 {
-	int			size;
-	static char	*tmp_buffer[2048];
+	int			bytes_read;
+	static char	*tmp_buffer[10240];
 	char		*buf;
 
-	if (fd < 0 || fd > 2048 || BUFFER_SIZE <= 0 || line == NULL)
+	if (fd < 0 || fd >= 10240 || BUFFER_SIZE <= 0 || line == NULL)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while ((size = read(fd, buf, BUFFER_SIZE)) >= 0)
+	while ((bytes_read = read(fd, buf, BUFFER_SIZE)) >= 0)
 	{
-		if (getline(&tmp_buffer[fd], buf, size) || size <= 0)
+		if (getline(&tmp_buffer[fd], buf, bytes_read) || bytes_read <= 0)
 			break ;
 	}
 	free(buf);
-	if (size < 0)
+	if (bytes_read < 0)
 		return (-1);
 	return (check(&tmp_buffer[fd], line));
 }
