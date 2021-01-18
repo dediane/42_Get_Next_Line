@@ -6,7 +6,7 @@
 /*   By: ddecourt <ddecourt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:50:43 by ddecourt          #+#    #+#             */
-/*   Updated: 2021/01/11 11:13:17 by ddecourt         ###   ########.fr       */
+/*   Updated: 2021/01/18 13:06:38 by ddecourt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			get_next_line(int fd, char **line)
 	static char	*tmp_buffer[10240];
 	char		*buf;
 
-	if (fd < 0 || fd >= 10240 || BUFFER_SIZE <= 0 || line == NULL)
+	if (fd <= 0 || fd >= 10240 || BUFFER_SIZE <= 0 || line == NULL)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
